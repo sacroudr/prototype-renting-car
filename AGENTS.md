@@ -50,13 +50,12 @@ The homepage is assembled in `app/page.tsx` in this order:
 1. Header integrated over the hero
 2. Hero with two-date reservation search
 3. “Comment ça marche”
-4. Trust badges
+4. Service expert (reliability pitch + satisfaction stat)
 5. Filterable fleet
-6. Most requested vehicles
-7. Testimonials
-8. Why Jidor Car
-9. FAQ with contact methods
-10. Footer
+6. Testimonials carousel
+7. Why Jidor Car
+8. FAQ with contact methods
+9. Footer
 
 Do not reintroduce the former standalone “À votre écoute” contact section; contact actions are deliberately consolidated inside the FAQ.
 
@@ -69,7 +68,7 @@ Do not reintroduce the former standalone “À votre écoute” contact section;
 - `components/MotionController.tsx`: dynamically loaded GSAP and ScrollTrigger behavior
 - `data/content.ts`: placeholder vehicles, testimonials, FAQ, and prices
 - `types/index.ts`: shared content interfaces
-- `public/vehicles/`: locally stored vehicle photographs and attribution notes
+- `public/vehicles/`: locally stored generated studio vehicle images and archived photo attribution notes
 - `public/jidor-logo.png`: current client logo asset
 
 Original planning references, when available on the same machine:
@@ -79,9 +78,9 @@ Original planning references, when available on the same machine:
 
 ## Content status
 
-Vehicle names and their displayed photographs currently match, but prices, availability, testimonials, contact information, social links, and some photography remain demo content. Do not present placeholder testimonials or business claims as verified facts. Keep comments or visible demo notices where already present until the client supplies final material.
+Vehicle names and their displayed generated studio images currently match and share a consistent front-left three-quarter angle. Prices, availability, contact information, social links, and some other photography remain demo content. Testimonials are real Google reviews supplied by the client (star ratings were not in the source text and are assumed 5/5 — confirm exact counts before final publish). The Service Expert satisfaction stat is explicitly marked as a demo placeholder. Do not present placeholder content or business claims as verified facts. Keep comments or visible demo notices where already present until the client supplies final material.
 
-Vehicle filters in `components/FleetGrid.tsx` are interactive and must remain functional. Both fleet sections should reuse the vehicle data from `data/content.ts` so names, prices, and images do not drift.
+Vehicle filters in `components/FleetGrid.tsx` are interactive and must remain functional. The fleet section reuses the vehicle data from `data/content.ts` so names, prices, and images do not drift.
 
 ## Animation rules
 

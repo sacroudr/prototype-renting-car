@@ -23,12 +23,14 @@ export function FAQ({ items }: FAQProps) {
 
           <div data-stagger-group className="mt-10 grid gap-3">
             {items.map((item, index) => (
-              <details data-stagger-item key={item.id} className="faq-item group rounded-card border border-white/12 bg-white/[.025]" open={index === 1}>
-                <summary className="flex min-h-20 cursor-pointer items-center justify-between gap-4 px-5 py-4 font-medium text-[#E4ECF4] sm:px-6">
+              <details data-stagger-item key={item.id} className="faq-item group rounded-card border border-white/12 bg-white/[.025] transition-colors duration-200 open:border-bright-blue/30 open:bg-white/[.05]" open={index === 0}>
+                <summary className="flex min-h-20 cursor-pointer items-center justify-between gap-4 px-5 py-4 font-medium text-[#E4ECF4] sm:px-6 group-open:text-white">
                   <span>{item.question}</span>
-                  <Plus className="faq-plus shrink-0 text-bright-blue" size={22} strokeWidth={1.6} aria-hidden="true" />
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-white/10 transition-colors duration-200 group-hover:bg-white/15 group-open:bg-jidor/20">
+                    <Plus className="text-bright-blue transition-transform duration-200 group-open:rotate-45" size={18} strokeWidth={1.8} aria-hidden="true" />
+                  </span>
                 </summary>
-                <p className="px-5 pb-6 pr-12 text-sm leading-7 text-[#9DB2C8] sm:px-6 sm:pr-16">{item.answer}</p>
+                <p className="px-5 pb-6 pr-14 text-sm leading-7 text-[#9DB2C8] sm:px-6 sm:pr-16">{item.answer}</p>
               </details>
             ))}
           </div>
@@ -47,7 +49,7 @@ export function FAQ({ items }: FAQProps) {
               </a>
             ))}
           </div>
-          <p className="mt-8 text-center text-xs text-[#6B82A0]">Disponible 7 jours sur 7</p>
+          <p className="mt-8 text-center text-xs text-[#9DB2C8]">Disponible 7 jours sur 7</p>
         </aside>
       </div>
     </section>

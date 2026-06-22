@@ -3,7 +3,7 @@ import { Logo } from "./Logo";
 
 const navigation = [
   { label: "La flotte", href: "#flotte" },
-  { label: "Les favoris", href: "#populaires" },
+  { label: "Avis", href: "#avis" },
   { label: "À propos", href: "#pourquoi" },
   { label: "Contact", href: "#faq" },
 ];

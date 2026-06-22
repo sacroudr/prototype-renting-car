@@ -56,6 +56,11 @@ select {
   font: inherit;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0;
+}
+
 a {
   text-decoration: none;
 }
@@ -132,6 +137,7 @@ a {
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
+select:focus-visible,
 summary:focus-visible {
   outline: 3px solid #3da5ea;
   outline-offset: 3px;
@@ -191,8 +197,8 @@ summary:focus-visible {
   inset: 0;
   z-index: -1;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(6, 20, 39, 0.88);
-  box-shadow: 0 12px 36px rgba(6, 20, 39, 0.14);
+  background: rgba(10, 30, 54, 0.88);
+  box-shadow: 0 12px 36px rgba(10, 30, 54, 0.14);
   opacity: 0;
   backdrop-filter: blur(18px);
   content: "";
@@ -252,7 +258,7 @@ summary:focus-visible {
 
 .header-whatsapp {
   border: 1px solid rgba(255, 255, 255, 0.24);
-  background: rgba(6, 20, 39, 0.2);
+  background: rgba(10, 30, 54, 0.2);
   color: #ffffff;
   backdrop-filter: blur(12px);
 }
@@ -277,12 +283,25 @@ summary:focus-visible {
   display: none;
 }
 
-.faq-item[open] .faq-plus {
-  transform: rotate(45deg);
+.testimonial-progress {
+  transform-origin: left;
+  animation-name: testimonial-progress-fill;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 
-.faq-plus {
-  transition: transform 180ms ease-out;
+.testimonial-stage:hover .testimonial-progress,
+.testimonial-stage:focus-within .testimonial-progress {
+  animation-play-state: paused;
+}
+
+@keyframes testimonial-progress-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 
 @media (min-width: 768px) {

@@ -2,24 +2,24 @@ import type { FAQItem, Testimonial, Vehicle } from "@/types";
 
 // PLACEHOLDER CONTENT: models and pricing still require client confirmation. Photos depict the named models.
 export const vehicles: Vehicle[] = [
-  { id: "dacia-sandero", name: "Dacia Sandero", category: "Citadine", image: "/vehicles/dacia-sandero.jpg", seats: 5, transmission: "Manuelle", fuel: "Essence", year: 2023, pricePerDay: 280 },
-  { id: "hyundai-accent", name: "Hyundai Accent", category: "Berline", image: "/vehicles/hyundai-accent.jpg", seats: 5, transmission: "Automatique", fuel: "Diesel", year: 2022, pricePerDay: 350 },
-  { id: "kia-sportage", name: "Kia Sportage", category: "SUV", image: "/vehicles/kia-sportage.jpg", seats: 5, transmission: "Automatique", fuel: "Diesel", year: 2022, pricePerDay: 590 },
-  { id: "peugeot-208", name: "Peugeot 208", category: "Citadine", image: "/vehicles/peugeot-208.jpg", seats: 5, transmission: "Manuelle", fuel: "Essence", year: 2022, pricePerDay: 320 },
-  { id: "volkswagen-troc", name: "Volkswagen T-Roc", category: "SUV", image: "/vehicles/volkswagen-troc.jpg", seats: 5, transmission: "Automatique", fuel: "Diesel", year: 2023, pricePerDay: 650 },
-  { id: "renault-clio", name: "Renault Clio", category: "Citadine", image: "/vehicles/renault-clio.jpg", seats: 5, transmission: "Manuelle", fuel: "Essence", year: 2023, pricePerDay: 300 },
+  { id: "dacia-sandero", name: "Dacia Sandero", category: "Citadine", image: "/vehicles/dacia-sandero-studio.jpg", seats: 5, transmission: "Manuelle", fuel: "Essence", year: 2023, pricePerDay: 280 },
+  { id: "hyundai-accent", name: "Hyundai Accent", category: "Berline", image: "/vehicles/hyundai-accent-studio.jpg", seats: 5, transmission: "Automatique", fuel: "Diesel", year: 2022, pricePerDay: 350 },
+  { id: "kia-sportage", name: "Kia Sportage", category: "SUV", image: "/vehicles/kia-sportage-studio.jpg", seats: 5, transmission: "Automatique", fuel: "Diesel", year: 2022, pricePerDay: 590 },
+  { id: "peugeot-208", name: "Peugeot 208", category: "Citadine", image: "/vehicles/peugeot-208-studio.jpg", seats: 5, transmission: "Manuelle", fuel: "Essence", year: 2022, pricePerDay: 320 },
+  { id: "volkswagen-troc", name: "Volkswagen T-Roc", category: "SUV", image: "/vehicles/volkswagen-troc-studio.jpg", seats: 5, transmission: "Automatique", fuel: "Diesel", year: 2023, pricePerDay: 650 },
+  { id: "renault-clio", name: "Renault Clio", category: "Citadine", image: "/vehicles/renault-clio-studio.jpg", seats: 5, transmission: "Manuelle", fuel: "Essence", year: 2023, pricePerDay: 300 },
 ];
 
-export const popularVehicles: Vehicle[] = vehicles.slice(0, 3).map((vehicle, index) => ({
-  ...vehicle,
-  rank: index + 1,
-}));
-
-// PLACEHOLDER CONTENT: publish only after the client supplies verifiable customer reviews.
+// Real customer reviews sourced from Google. Star ratings were not included in the
+// source text and are assumed 5/5 from the overwhelmingly positive tone — confirm
+// exact counts with the client before final publish.
 export const testimonials: Testimonial[] = [
-  { id: "amina", name: "Amina B.", role: "Consultante à Casablanca", rating: 5, quote: "Réservation simple, voiture impeccable et livraison exactement à l’heure. Une équipe vraiment disponible." },
-  { id: "youssef", name: "Youssef L.", role: "Entrepreneur", rating: 5, quote: "Le prix annoncé était le prix payé. Aucun frais caché, et une réponse rapide sur WhatsApp." },
-  { id: "claire", name: "Claire M.", role: "Voyageuse française", rating: 5, quote: "Accueil chaleureux à l’aéroport et conseils très utiles pour notre trajet jusqu’à Essaouira." },
+  { id: "tarik-adraoui", name: "Tarik Adraoui", role: "Avis Google · 3 avis", rating: 5, quote: "Excellente expérience avec Jidor Car ! Le service client est tout simplement exceptionnel : l'équipe est réactive, professionnelle et toujours prête à répondre à nos besoins. Les voitures proposées sont impeccables, bien entretenues et très confortables. La réservation est rapide et facile, avec des tarifs compétitifs qui offrent un très bon rapport qualité-prix. Je recommande vivement cette agence de location pour tous vos déplacements, que ce soit pour un voyage d'affaires ou une escapade personnelle." },
+  { id: "mohamed-khali", name: "Mohamed khali", role: "Avis Google · 11 avis", rating: 5, quote: "M. Mohamed Rassify est très à l'écoute de ses clients et offre un service irréprochable. Il vous accueille toujours avec un sourire chaleureux, un cœur ouvert et une attitude aimable et polie." },
+  { id: "youssef-youssef", name: "Youssef Youssef", role: "Avis Google · Local Guide, 77 avis", rating: 5, quote: "Le meilleur loueur du Maroc!\nService et prix impeccable!\nMerci à SI Mohamed pour son efficacité et son très grand professionnalisme!\nBravo et à très bientôt!" },
+  { id: "otmane-azeroual", name: "Otmane Azeroual", role: "Avis Google · Local Guide, 14 avis", rating: 5, quote: "Je suis très satisfait de votre service, personnel très agréable et professionnel. J'ai encore bénéficié de ce meilleur service cette année 2023 comme les deux dernières années. Je recommanderai certainement cette société de location de voitures à tous ceux qui souhaitent louer une voiture au Maroc. Je vous remercie encore sincèrement et vous souhaite tout le meilleur!" },
+  { id: "ham-gu", name: "Ham Gu", role: "Avis Google · Local Guide, 12 avis", rating: 5, quote: "EXCELLENT!!!\nLes voitures sont neuves et dans un état irréprochable. Les prix sont honnêtes et abordables pour la qualité de service.\nJ'ai eu l'occasion de louer la dernière C4, le nouveau Tiguan, le C5 aircross et aujourd'hui la 3008 et c'est à chaque fois un plaisir.\nLes voitures sont amenées au pied de la porte et l'équipe est top.\nUn énorme merci à Mohamed le gérant et Brahim le voiturier." },
+  { id: "helene-gan", name: "Hélène Gan", role: "Avis Google · 5 avis", rating: 5, quote: "L'equipe de JIDOR CAR est tres compétente: disponible, s'adapte à mes besoins durant mes differents sejours. Je loue uniquement chez eux car ils ont su de part le professionalisme apporter une confiance mutuelle, un service de qualité en etant à l'ecoute. Il sont efficace et operationnelle. Je recommande car on sait a quoi s'attendre voir même mieux dans le service founis. Merci à tte l'équipe." },
 ];
 
 // PLACEHOLDER CONTENT: confirm rental conditions, documents and cancellation policy with the client.

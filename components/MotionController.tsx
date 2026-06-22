@@ -118,6 +118,31 @@ export function MotionController({ children }: MotionControllerProps) {
                 );
               }
 
+              gsap.utils.toArray<HTMLElement>("[data-satisfaction-stat]").forEach((stat) => {
+                const ring = stat.querySelector<SVGCircleElement>("[data-progress-ring]");
+                const valueEl = stat.querySelector<HTMLElement>("[data-progress-value]");
+                if (!ring || !valueEl) return;
+
+                const target = parseInt(valueEl.textContent ?? "0", 10);
+                const circumference = ring.getTotalLength();
+                const proxy = { value: 0 };
+
+                gsap.fromTo(
+                  proxy,
+                  { value: 0 },
+                  {
+                    value: target,
+                    duration: 1.5,
+                    ease: "power2.out",
+                    scrollTrigger: { trigger: stat, start: "top 80%", once: true },
+                    onUpdate: () => {
+                      valueEl.textContent = `${Math.round(proxy.value)}%`;
+                      ring.setAttribute("stroke-dashoffset", `${circumference - (proxy.value / 100) * circumference}`);
+                    },
+                  },
+                );
+              });
+
               if (!canHover) return;
               const hoverTargets = gsap.utils.toArray<HTMLElement>(".motion-hover");
               const listeners = hoverTargets.map((target) => {

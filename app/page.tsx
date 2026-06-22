@@ -5,11 +5,10 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { FAQ } from "@/components/FAQ";
-import { PopularThisWeek } from "@/components/PopularThisWeek";
+import { ServiceExpert } from "@/components/ServiceExpert";
 import { Testimonials } from "@/components/Testimonials";
-import { TrustBadges } from "@/components/TrustBadges";
 import { WhyJidorCar } from "@/components/WhyJidorCar";
-import { faqItems, popularVehicles, testimonials, vehicles } from "@/data/content";
+import { faqItems, testimonials, vehicles } from "@/data/content";
 
 export default function Home() {
   return (
@@ -21,9 +20,8 @@ export default function Home() {
       <main id="main-content">
         <Hero />
         <HowItWorks />
-        <TrustBadges />
+        <ServiceExpert />
         <FleetGrid vehicles={vehicles} />
-        <PopularThisWeek vehicles={popularVehicles} />
         <Testimonials testimonials={testimonials} rating="4,9/5" />
         <WhyJidorCar />
         <FAQ items={faqItems} />

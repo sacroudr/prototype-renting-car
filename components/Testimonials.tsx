@@ -1,5 +1,6 @@
-import { Quote, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import type { Testimonial } from "@/types";
+import { TestimonialsCarousel } from "./TestimonialsCarousel";
 
 interface TestimonialsProps {
   testimonials: Testimonial[];
@@ -10,38 +11,43 @@ const initials = (name: string) => name.split(" ").map((part) => part[0]).join("
 
 export function Testimonials({ testimonials, rating }: TestimonialsProps) {
   return (
-    <section data-reveal className="section-shell overflow-hidden bg-[#061427] text-white">
-      <div className="site-container">
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="section-kicker text-bright-blue">Témoignages</p>
-          <h2 className="mt-5 font-display text-[clamp(2.7rem,6vw,5rem)] font-medium leading-[1.02] tracking-[-.045em]">La confiance se gagne sur la route.</h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-[#9DB2C8]">Ne nous croyez pas sur parole. Voici ce que nos clients disent de leur expérience avec Jidor Car.</p>
+    <section id="avis" data-reveal className="section-shell relative overflow-hidden bg-paper text-ink">
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div className="absolute -left-32 top-20 size-[460px] rounded-full bg-bright-blue/14 blur-3xl" />
+        <div className="absolute -bottom-40 -right-24 size-[500px] rounded-full bg-jidor/12 blur-3xl" />
+        <div className="absolute left-1/2 top-1/2 size-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/80 blur-3xl" />
+      </div>
+
+      <div className="site-container relative z-10">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="section-kicker text-deep-blue">Témoignages</p>
+          <h2 className="section-title mt-5 text-ink">
+            La confiance se gagne sur <span className="text-jidor">la route</span>.
+          </h2>
+          <p className="mt-5 text-[1.02rem] leading-7 text-slate">Ne nous croyez pas sur parole. Voici de vrais avis Google laissés par nos clients.</p>
         </div>
 
-        <div data-stagger-group className="mt-14 grid gap-5 lg:grid-cols-3">
-          {testimonials.map((testimonial) => (
-            <article data-stagger-item key={testimonial.id} className="motion-hover flex min-h-[360px] flex-col rounded-card border border-white/10 bg-white/[.025] p-7 sm:p-8">
-              <div className="flex items-center justify-between">
-                <span className="inline-flex gap-1 text-sand" aria-label={`${testimonial.rating} étoiles sur 5`}>
-                  {Array.from({ length: testimonial.rating }).map((_, index) => <Star key={index} size={15} fill="currentColor" />)}
-                </span>
-                <Quote size={30} strokeWidth={1.2} className="text-bright-blue/30" />
-              </div>
-              <p className="mt-8 flex-1 text-[1.02rem] leading-8 text-[#D7E2EE]">“{testimonial.quote}”</p>
-              <div className="mt-8 flex items-center gap-4 border-t border-white/10 pt-6">
-                <span className="flex size-12 items-center justify-center rounded-card bg-mist font-display text-sm font-semibold text-ink">{initials(testimonial.name)}</span>
-                <span><strong className="block text-sm">{testimonial.name}</strong><span className="text-xs text-[#6B82A0]">{testimonial.role}</span></span>
-              </div>
-            </article>
-          ))}
+        <div className="mx-auto mt-12 max-w-6xl">
+          <TestimonialsCarousel testimonials={testimonials} />
         </div>
 
-        <div className="mt-14 grid gap-px overflow-hidden rounded-card bg-white/10 sm:grid-cols-3">
-          <div className="bg-[#061427] px-6 py-8 text-center"><strong className="font-display text-4xl font-light">{rating}</strong><span className="mt-2 block font-mono text-[10px] uppercase tracking-[.16em] text-[#6B82A0]">Note moyenne</span></div>
-          <div className="bg-[#061427] px-6 py-8 text-center"><strong className="font-display text-4xl font-light">24/7</strong><span className="mt-2 block font-mono text-[10px] uppercase tracking-[.16em] text-[#6B82A0]">Assistance</span></div>
-          <div className="bg-[#061427] px-6 py-8 text-center"><strong className="font-display text-4xl font-light">0</strong><span className="mt-2 block font-mono text-[10px] uppercase tracking-[.16em] text-[#6B82A0]">Frais cachés</span></div>
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
+          <div className="flex items-center -space-x-3">
+            {testimonials.slice(0, 3).map((testimonial) => (
+              <span key={testimonial.id} className="flex size-9 items-center justify-center rounded-full border-2 border-white bg-mist font-display text-xs font-semibold text-ink shadow-sm">
+                {initials(testimonial.name)}
+              </span>
+            ))}
+          </div>
+          <span className="text-sm text-slate">{testimonials.length} avis Google</span>
+          <span className="h-4 w-px bg-ink/15" aria-hidden="true" />
+          <span className="inline-flex items-center gap-2 text-sm text-slate">
+            <span className="inline-flex gap-0.5 text-jidor" aria-hidden="true">
+              {Array.from({ length: 5 }).map((_, star) => <Star key={star} size={14} fill="currentColor" />)}
+            </span>
+            {rating} note moyenne
+          </span>
         </div>
-        <p className="mt-5 text-center text-xs text-[#6B82A0]">Avis de démonstration — à remplacer par des témoignages clients vérifiés avant publication.</p>
       </div>
     </section>
   );

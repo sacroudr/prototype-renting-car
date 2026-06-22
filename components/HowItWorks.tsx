@@ -38,15 +38,15 @@ export function HowItWorks() {
           <p className="mt-5 text-[1.02rem] leading-7 text-slate">Réservez votre voiture à Casablanca en trois étapes claires, sans formulaire interminable.</p>
         </div>
 
-        <div data-stagger-group className="relative mt-14 grid gap-10 lg:grid-cols-3 lg:gap-8">
+        <div data-stagger-group className="relative mt-10 grid gap-7 lg:mt-14 lg:grid-cols-3 lg:gap-8">
           <div className="absolute left-[16.5%] right-[16.5%] top-14 hidden h-px bg-line lg:block" aria-hidden="true" />
           {steps.map(({ number, title, description, icon: Icon }) => (
             <article data-stagger-item key={number} className="relative flex flex-col items-center text-center">
-              <span className="relative z-10 flex size-28 items-center justify-center rounded-full border border-jidor/25 bg-mist text-deep-blue shadow-[0_0_0_10px_#fff]">
-                <Icon size={36} strokeWidth={1.6} />
-                <span className="absolute -right-1 -top-1 flex size-8 items-center justify-center rounded-full bg-jidor font-mono text-[10px] font-bold text-white">{number}</span>
+              <span className="relative z-10 flex size-20 items-center justify-center rounded-full border border-jidor/25 bg-mist text-deep-blue shadow-[0_0_0_6px_#fff] lg:size-28 lg:shadow-[0_0_0_10px_#fff]">
+                <Icon size={28} strokeWidth={1.6} className="lg:size-9" />
+                <span className="absolute -right-1 -top-1 flex size-7 items-center justify-center rounded-full bg-jidor font-mono text-[9px] font-bold text-white lg:size-8 lg:text-[10px]">{number}</span>
               </span>
-              <h3 className="mt-8 font-display text-xl font-semibold tracking-[-.02em] text-ink">{title}</h3>
+              <h3 className="mt-5 font-display text-xl font-semibold tracking-[-.02em] text-ink lg:mt-8">{title}</h3>
               <p className="mt-3 max-w-sm text-sm leading-6 text-slate">{description}</p>
             </article>
           ))}

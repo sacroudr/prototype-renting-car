@@ -10,7 +10,6 @@ export interface Vehicle {
   fuel: "Essence" | "Diesel" | "Hybride";
   year: number;
   pricePerDay: number;
-  rank?: number;
 }
 
 export interface Testimonial {
@@ -19,12 +18,6 @@ export interface Testimonial {
   role: string;
   rating: number;
   quote: string;
-}
-
-export interface TrustBadge {
-  label: string;
-  detail: string;
-  icon: "shield" | "headphones" | "plane" | "receipt";
 }
 
 export interface FAQItem {
