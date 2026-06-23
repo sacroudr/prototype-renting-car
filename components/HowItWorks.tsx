@@ -1,4 +1,5 @@
-import { CalendarRange, CarFront, MapPinned } from "lucide-react";
+import { ArrowRight, CalendarRange, CarFront, MapPinned } from "lucide-react";
+import { SectionBackdrop } from "./SectionBackdrop";
 
 interface RentalStep {
   number: string;
@@ -30,8 +31,10 @@ const steps: RentalStep[] = [
 
 export function HowItWorks() {
   return (
-    <section data-reveal className="section-shell overflow-hidden bg-white" aria-labelledby="how-it-works-title">
-      <div className="site-container">
+    <section data-reveal className="section-shell relative" aria-labelledby="how-it-works-title">
+      <SectionBackdrop />
+
+      <div className="site-container relative z-10">
         <div className="mx-auto max-w-2xl text-center">
           <p className="section-kicker mb-3 text-deep-blue">Simple, du début à la fin</p>
           <h2 id="how-it-works-title" className="section-title text-ink">Comment ça marche</h2>
@@ -42,7 +45,7 @@ export function HowItWorks() {
           <div className="absolute left-[16.5%] right-[16.5%] top-14 hidden h-px bg-line lg:block" aria-hidden="true" />
           {steps.map(({ number, title, description, icon: Icon }) => (
             <article data-stagger-item key={number} className="relative flex flex-col items-center text-center">
-              <span className="relative z-10 flex size-20 items-center justify-center rounded-full border border-jidor/25 bg-mist text-deep-blue shadow-[0_0_0_6px_#fff] lg:size-28 lg:shadow-[0_0_0_10px_#fff]">
+              <span className="relative z-10 flex size-20 items-center justify-center rounded-full border border-jidor/25 bg-mist text-deep-blue shadow-[0_0_0_6px_var(--color-paper)] lg:size-28 lg:shadow-[0_0_0_10px_var(--color-paper)]">
                 <Icon size={28} strokeWidth={1.6} className="lg:size-9" />
                 <span className="absolute -right-1 -top-1 flex size-7 items-center justify-center rounded-full bg-jidor font-mono text-[9px] font-bold text-white lg:size-8 lg:text-[10px]">{number}</span>
               </span>
@@ -50,6 +53,13 @@ export function HowItWorks() {
               <p className="mt-3 max-w-sm text-sm leading-6 text-slate">{description}</p>
             </article>
           ))}
+        </div>
+
+        <div className="mt-10 flex justify-center">
+          <a href="#reservation" className="button-primary motion-hover group">
+            Commencer ma réservation
+            <ArrowRight size={16} strokeWidth={1.8} className="transition-transform duration-200 group-hover:translate-x-1" />
+          </a>
         </div>
       </div>
     </section>

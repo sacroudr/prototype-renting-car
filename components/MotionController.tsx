@@ -100,10 +100,17 @@ export function MotionController({ children }: MotionControllerProps) {
                 );
               });
 
-              const cards = gsap.utils.toArray<HTMLElement>("[data-fleet-card]");
-              if (cards.length) {
+              const cardGroups = new Map<HTMLElement, HTMLElement[]>();
+              gsap.utils.toArray<HTMLElement>("[data-fleet-card]").forEach((card) => {
+                const group = card.closest<HTMLElement>("[data-fleet-card-group]");
+                if (!group) return;
+                const groupCards = cardGroups.get(group) ?? [];
+                groupCards.push(card);
+                cardGroups.set(group, groupCards);
+              });
+              cardGroups.forEach((groupCards, group) => {
                 gsap.fromTo(
-                  cards,
+                  groupCards,
                   { opacity: 0, y: 24, scale: 0.99 },
                   {
                     opacity: 1,
@@ -113,10 +120,10 @@ export function MotionController({ children }: MotionControllerProps) {
                     stagger: 0.045,
                     ease: "power3.out",
                     clearProps: "transform,opacity",
-                    scrollTrigger: { trigger: cards[0].parentElement, start: "top 82%", once: true },
+                    scrollTrigger: { trigger: group, start: "top 82%", once: true },
                   },
                 );
-              }
+              });
 
               gsap.utils.toArray<HTMLElement>("[data-satisfaction-stat]").forEach((stat) => {
                 const ring = stat.querySelector<SVGCircleElement>("[data-progress-ring]");

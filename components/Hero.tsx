@@ -54,7 +54,7 @@ export function Hero() {
           <p data-hero-item className="mt-6 text-sm text-[#AFC0D2]">Assurance incluse · Livraison aéroport · Confirmation rapide sur WhatsApp</p>
         </div>
 
-        <form id="reservation" data-hero-item action="#flotte" className="relative w-full max-w-md overflow-hidden rounded-card border border-white/15 bg-white/95 text-ink shadow-[var(--shadow-float)] backdrop-blur-xl lg:w-[520px] lg:shrink-0">
+        <form id="reservation" data-hero-item action="#flotte" className="relative hidden w-full max-w-md overflow-hidden rounded-card border border-white/15 bg-white/95 text-ink shadow-[var(--shadow-float)] backdrop-blur-xl lg:block lg:w-[520px] lg:shrink-0">
           <span className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-jidor via-bright-blue to-jidor" aria-hidden="true" />
           <div className="p-6 lg:p-8">
             <p className="section-kicker text-deep-blue">Réservation rapide</p>

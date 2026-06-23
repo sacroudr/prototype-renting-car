@@ -1,5 +1,6 @@
-import { Star } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import type { Testimonial } from "@/types";
+import { SectionBackdrop } from "./SectionBackdrop";
 import { TestimonialsCarousel } from "./TestimonialsCarousel";
 
 interface TestimonialsProps {
@@ -11,12 +12,8 @@ const initials = (name: string) => name.split(" ").map((part) => part[0]).join("
 
 export function Testimonials({ testimonials, rating }: TestimonialsProps) {
   return (
-    <section id="avis" data-reveal className="section-shell relative overflow-hidden bg-paper text-ink">
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute -left-32 top-20 size-[460px] rounded-full bg-bright-blue/14 blur-3xl" />
-        <div className="absolute -bottom-40 -right-24 size-[500px] rounded-full bg-jidor/12 blur-3xl" />
-        <div className="absolute left-1/2 top-1/2 size-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/80 blur-3xl" />
-      </div>
+    <section id="avis" data-reveal className="section-shell relative text-ink">
+      <SectionBackdrop />
 
       <div className="site-container relative z-10">
         <div className="mx-auto max-w-2xl text-center">
@@ -47,6 +44,13 @@ export function Testimonials({ testimonials, rating }: TestimonialsProps) {
             </span>
             {rating} note moyenne
           </span>
+        </div>
+
+        <div className="mt-8 flex justify-center">
+          <a href="#reservation" className="button-primary motion-hover group">
+            Réserver en confiance
+            <ArrowRight size={16} strokeWidth={1.8} className="transition-transform duration-200 group-hover:translate-x-1" />
+          </a>
         </div>
       </div>
     </section>

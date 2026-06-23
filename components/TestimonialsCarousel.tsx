@@ -42,7 +42,7 @@ export function TestimonialsCarousel({ testimonials }: TestimonialsCarouselProps
           <span className="flex size-20 items-center justify-center rounded-card bg-jidor font-display text-xl font-semibold text-white shadow-[0_12px_30px_rgba(22,131,214,.22)] sm:size-24">{initials(active.name)}</span>
           <strong className="mt-7 block font-display text-xl text-ink sm:text-2xl">{active.name}</strong>
           <span className="mt-2 text-base text-slate">Client Jidor Car</span>
-          <div className="mt-5 inline-flex items-center rounded-pill border border-jidor/10 bg-white/65 px-4 py-2 text-xs text-deep-blue shadow-sm backdrop-blur-md">{active.role}</div>
+          {/* <div className="mt-5 inline-flex items-center rounded-pill border border-jidor/10 bg-white/65 px-4 py-2 text-xs text-deep-blue shadow-sm backdrop-blur-md">{active.role}</div> */}
           <div className="mt-6 inline-flex gap-1 text-jidor" aria-label={`${active.rating} étoiles sur 5`}>
             {Array.from({ length: active.rating }).map((_, star) => <Star key={star} size={15} fill="currentColor" />)}
           </div>

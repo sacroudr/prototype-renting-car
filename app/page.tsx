@@ -1,4 +1,5 @@
 import { MotionController } from "@/components/MotionController";
+import { ProspectionModal } from "@/components/ProspectionModal";
 import { FleetGrid } from "@/components/FleetGrid";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -19,14 +20,17 @@ export default function Home() {
       <Header />
       <main id="main-content">
         <Hero />
-        <HowItWorks />
-        <ServiceExpert />
-        <FleetGrid vehicles={vehicles} />
-        <Testimonials testimonials={testimonials} rating="4,9/5" />
-        <WhyJidorCar />
-        <FAQ items={faqItems} />
+        <div className="relative overflow-hidden bg-paper text-ink">
+          <HowItWorks />
+          <ServiceExpert />
+          <FleetGrid vehicles={vehicles} />
+          <Testimonials testimonials={testimonials} rating="4,9/5" />
+          <WhyJidorCar />
+          <FAQ items={faqItems} />
+        </div>
       </main>
       <Footer />
+      <ProspectionModal />
     </MotionController>
   );
 }
