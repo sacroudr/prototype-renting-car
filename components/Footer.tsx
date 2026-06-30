@@ -2,18 +2,15 @@ import { MapPin } from "lucide-react";
 import { Logo } from "./Logo";
 import { SectionBackdrop } from "./SectionBackdrop";
 import { FacebookIcon, InstagramIcon, LinkedInIcon } from "./SocialIcons";
+import { agency } from "@/data/agency";
+import { content } from "@/data/content";
 
-const navLinks = [
-  { label: "Accueil", href: "#" },
-  { label: "Véhicules", href: "#flotte" },
-  { label: "À Propos", href: "#pourquoi" },
-  { label: "Contact", href: "#faq" },
-];
+const { footer } = content;
 
 const socialLinks = [
-  { label: "Instagram", href: "https://www.instagram.com/jidorcar/", icon: InstagramIcon },
-  { label: "Facebook", href: "https://web.facebook.com/jidor.car?_rdc=1&_rdr#", icon: FacebookIcon },
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/jidor-car/posts/", icon: LinkedInIcon },
+  { label: "Instagram", href: agency.socialLinks.instagram, icon: InstagramIcon },
+  { label: "Facebook", href: agency.socialLinks.facebook, icon: FacebookIcon },
+  { label: "LinkedIn", href: agency.socialLinks.linkedin, icon: LinkedInIcon },
 ];
 
 export function Footer() {
@@ -27,36 +24,36 @@ export function Footer() {
             <span className="inline-block rounded-panel border border-white/80 bg-white/80 px-3 py-1 shadow-sm backdrop-blur-xl">
               <Logo />
             </span>
-            <p className="mt-5 max-w-sm text-sm leading-6 text-slate">Location de voitures à Casablanca. Premium et accessible, avec la chaleur d’une agence locale.</p>
+            <p className="mt-5 max-w-sm text-sm leading-6 text-slate">{footer.tagline}</p>
           </div>
 
           <div data-stagger-item>
-            <h2 className="section-kicker text-deep-blue">Navigation</h2>
+            <h2 className="section-kicker text-brand-deep">Navigation</h2>
             <div className="mt-4 grid gap-2 text-sm font-medium text-slate">
-              {navLinks.map((link) => (
-                <a key={link.label} className="transition-colors duration-200 hover:text-deep-blue" href={link.href}>{link.label}</a>
+              {footer.navLinks.map((link) => (
+                <a key={link.label} className="transition-colors duration-200 hover:text-brand-deep" href={link.href}>{link.label}</a>
               ))}
             </div>
           </div>
 
           <div data-stagger-item>
-            <h2 className="section-kicker text-deep-blue">Contact</h2>
+            <h2 className="section-kicker text-brand-deep">Contact</h2>
             <div className="mt-4 grid gap-2 text-sm font-medium text-slate">
-              <a className="transition-colors duration-200 hover:text-deep-blue" href="tel:+212661787903">+212 661-787903</a>
-              <a className="transition-colors duration-200 hover:text-deep-blue" href="mailto:contact@jidorcar.ma">contact@jidorcar.ma</a>
+              <a className="transition-colors duration-200 hover:text-brand-deep" href={agency.phoneHref}>{agency.phone}</a>
+              <a className="transition-colors duration-200 hover:text-brand-deep" href={agency.emailHref}>{agency.email}</a>
               <span className="flex items-start gap-2">
-                <MapPin size={16} className="mt-1 shrink-0 text-jidor" /> Casablanca, Maroc
+                <MapPin size={16} className="mt-1 shrink-0 text-brand" /> {agency.address}
               </span>
             </div>
           </div>
 
           <div data-stagger-item>
-            <h2 className="section-kicker text-deep-blue">Réseaux</h2>
+            <h2 className="section-kicker text-brand-deep">Réseaux</h2>
             <div className="mt-4 flex gap-3">
               {socialLinks.map(({ label, href, icon: Icon }) => (
                 <a
                   key={label}
-                  className="motion-hover flex size-11 items-center justify-center rounded-card border border-line bg-white/65 text-ink shadow-sm backdrop-blur-md transition-colors duration-200 hover:border-jidor/30 hover:text-deep-blue"
+                  className="motion-hover flex size-11 items-center justify-center rounded-card border border-line bg-white/65 text-ink shadow-sm backdrop-blur-md transition-colors duration-200 hover:border-brand/30 hover:text-brand-deep"
                   href={href}
                   target="_blank"
                   rel="noreferrer"
@@ -70,8 +67,8 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col justify-between gap-3 pt-6 text-xs text-slate sm:flex-row">
-          <p>© 2026 Jidor Car. Tous droits réservés.</p>
-          <p>Mentions légales · Politique de confidentialité</p>
+          <p>{footer.copyright}</p>
+          <p>{footer.legalText}</p>
         </div>
       </div>
     </footer>

@@ -1,15 +1,20 @@
 import Image from "next/image";
+import { agency } from "@/data/agency";
 
 interface LogoProps {
   className?: string;
 }
 
+// [IMAGE_SLOT: logo]
+// Drop client logo at /public/images/logo.svg (preferred) or logo.png.
+// Update agency.logoSrc in data/agency.ts.
+// Recommended: SVG with transparent background, at least 200px wide.
 export function Logo({ className = "" }: LogoProps) {
   return (
-    <span className={`relative block h-[42px] w-[168px] overflow-hidden ${className}`} aria-label="Jidor Car">
+    <span className={`relative block h-[42px] w-[168px] overflow-hidden ${className}`} aria-label={agency.name}>
       <Image
-        src="/jidor-logo.png"
-        alt="Jidor Car"
+        src={agency.logoSrc}
+        alt={agency.name}
         width={1024}
         height={1024}
         priority

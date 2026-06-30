@@ -23,7 +23,7 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
             data-stagger-item
             key={item.id}
             className={`faq-item rounded-card border bg-white shadow-sm transition-colors duration-200 ${
-              isOpen ? "border-jidor/30" : "border-line"
+              isOpen ? "border-brand/30" : "border-line"
             }`}
           >
             <button
@@ -33,15 +33,15 @@ export function FAQAccordion({ items }: FAQAccordionProps) {
               aria-controls={panelId}
               onClick={() => setOpenItemId((current) => current === item.id ? null : item.id)}
               className={`flex min-h-20 w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left font-medium transition-colors duration-200 sm:px-6 ${
-                isOpen ? "text-deep-blue" : "text-ink"
+                isOpen ? "text-brand-deep" : "text-ink"
               }`}
             >
               <span>{item.question}</span>
               <span className={`flex size-9 shrink-0 items-center justify-center rounded-full transition-colors duration-200 ${
-                isOpen ? "bg-jidor/15" : "bg-mist"
+                isOpen ? "bg-brand/15" : "bg-mist"
               }`}>
                 <Plus
-                  className={`text-jidor transition-transform duration-200 ease-out ${isOpen ? "rotate-45" : "rotate-0"}`}
+                  className={`text-brand transition-transform duration-200 ease-out ${isOpen ? "rotate-45" : "rotate-0"}`}
                   size={18}
                   strokeWidth={1.8}
                   aria-hidden="true"

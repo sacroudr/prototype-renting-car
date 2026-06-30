@@ -3,9 +3,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Mail, MessageCircle, X } from "lucide-react";
 
-const WHATSAPP_NUMBER = "+33780713808";
-const WHATSAPP_URL = "https://wa.me/33780713808";
-const EMAIL = "sacroudr@gmail.com";
+// [AGENCY_CONFIG] Replace with developer contact details before deploying as a prospection demo
+const WHATSAPP_NUMBER = "__DEVELOPER_WHATSAPP__";
+const WHATSAPP_URL = "__DEVELOPER_WHATSAPP_URL__";
+const EMAIL = "__DEVELOPER_EMAIL__";
 const MODAL_TRANSITION_MS = 300;
 
 const interactiveSelector = [
@@ -16,9 +17,9 @@ const interactiveSelector = [
   ".button-secondary",
   ".button-whatsapp",
   "a[href^='#']",
-  "a[href^='tel:+212']",
-  "a[href^='mailto:contact@jidorcar.ma']",
-  "a[href*='wa.me/212']",
+  "a[href^='tel:']",
+  "a[href^='mailto:']",
+  "a[href*='wa.me']",
 ].join(", ");
 
 export function ProspectionModal() {
@@ -128,20 +129,20 @@ export function ProspectionModal() {
       }}
     >
       <div
-        className={`relative w-full max-w-2xl overflow-hidden rounded-card border border-white/85 bg-white/88 text-ink shadow-[0_34px_110px_rgba(10,30,54,.34)] ring-1 ring-jidor/10 backdrop-blur-2xl transition-[opacity,transform] duration-300 ease-[cubic-bezier(.16,1,.3,1)] motion-reduce:translate-y-0 motion-reduce:scale-100 motion-reduce:duration-0 ${
+        className={`relative w-full max-w-2xl overflow-hidden rounded-card border border-white/85 bg-white/88 text-ink shadow-[0_34px_110px_rgba(0,0,0,.34)] ring-1 ring-brand/10 backdrop-blur-2xl transition-[opacity,transform] duration-300 ease-[cubic-bezier(.16,1,.3,1)] motion-reduce:translate-y-0 motion-reduce:scale-100 motion-reduce:duration-0 ${
           isOpen ? "translate-y-0 scale-100 opacity-100" : "translate-y-6 scale-[0.98] opacity-0"
         }`}
       >
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-bright-blue/70 to-transparent" aria-hidden="true" />
-        <div className="pointer-events-none absolute -right-28 -top-28 size-72 rounded-full bg-jidor/18 blur-3xl" aria-hidden="true" />
-        <div className="pointer-events-none absolute -bottom-36 -left-28 size-80 rounded-full bg-bright-blue/16 blur-3xl" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-light/70 to-transparent" aria-hidden="true" />
+        <div className="pointer-events-none absolute -right-28 -top-28 size-72 rounded-full bg-brand/18 blur-3xl" aria-hidden="true" />
+        <div className="pointer-events-none absolute -bottom-36 -left-28 size-80 rounded-full bg-brand-light/16 blur-3xl" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,.72),rgba(234,243,251,.42)_48%,rgba(255,255,255,.68))]" aria-hidden="true" />
 
         <div className="relative p-6 sm:p-8">
           <button
             ref={closeButtonRef}
             type="button"
-            className="absolute right-5 top-5 flex size-11 cursor-pointer items-center justify-center rounded-full border border-line bg-white/70 text-ink shadow-sm backdrop-blur-xl transition-colors duration-200 hover:border-jidor/30 hover:bg-white hover:text-deep-blue"
+            className="absolute right-5 top-5 flex size-11 cursor-pointer items-center justify-center rounded-full border border-line bg-white/70 text-ink shadow-sm backdrop-blur-xl transition-colors duration-200 hover:border-brand/30 hover:bg-white hover:text-brand-deep"
             aria-label="Fermer la fenêtre"
             onClick={hideModal}
           >
@@ -149,11 +150,11 @@ export function ProspectionModal() {
           </button>
 
           <div className="flex items-start gap-4 pr-12">
-            <span className="flex size-12 shrink-0 items-center justify-center rounded-card border border-jidor/15 bg-jidor/10 text-deep-blue shadow-sm">
+            <span className="flex size-12 shrink-0 items-center justify-center rounded-card border border-brand/15 bg-brand/10 text-brand-deep shadow-sm">
               <MessageCircle size={24} strokeWidth={1.6} />
             </span>
             <div>
-              <p className="section-kicker text-deep-blue">Démo commerciale</p>
+              <p className="section-kicker text-brand-deep">Démo commerciale</p>
               <p className="mt-1 text-sm font-semibold text-slate">Information avant navigation</p>
             </div>
           </div>
@@ -162,7 +163,7 @@ export function ProspectionModal() {
             Ce site est une démonstration de prospection.
           </h2>
           <p id="prospection-modal-description" className="mt-5 max-w-xl text-sm leading-7 text-slate sm:text-base">
-            Le projet présente une proposition de site web pour Jidor Car. Pour plus d’information ou pour échanger sur la création d’un site similaire, contactez-moi directement via WhatsApp ou par email.
+            Le projet présente une proposition de site web. Pour plus d&apos;information ou pour échanger sur la création d&apos;un site similaire, contactez-moi directement via WhatsApp ou par email.
           </p>
 
           <div className="mt-6 rounded-panel border border-line/80 bg-white/55 p-4 shadow-sm backdrop-blur-xl">
@@ -177,7 +178,7 @@ export function ProspectionModal() {
             <a
               data-prospection-allow
               href={WHATSAPP_URL}
-              className="button-primary motion-hover shadow-[0_14px_30px_rgba(22,131,214,.22)]"
+              className="button-primary motion-hover shadow-[0_14px_30px_rgba(0,0,0,.15)]"
               target="_blank"
               rel="noreferrer"
             >
@@ -190,7 +191,7 @@ export function ProspectionModal() {
 
           <button
             type="button"
-            className="mt-5 min-h-11 cursor-pointer rounded-pill px-4 text-sm font-semibold text-slate transition-colors duration-200 hover:text-deep-blue"
+            className="mt-5 min-h-11 cursor-pointer rounded-pill px-4 text-sm font-semibold text-slate transition-colors duration-200 hover:text-brand-deep"
             onClick={hideModal}
           >
             Continuer à consulter la démonstration

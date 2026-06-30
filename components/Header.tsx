@@ -1,19 +1,15 @@
 import { ArrowRight, Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { LanguageToggle } from "./LanguageToggle";
+import { content } from "@/data/content";
 
-const navigation = [
-  { label: "Accueil", href: "#" },
-  { label: "Véhicules", href: "#flotte" },
-  { label: "À Propos", href: "#pourquoi" },
-  { label: "Contact", href: "#faq" },
-];
+const navigation = content.footer.navLinks;
 
 export function Header() {
   return (
     <header data-site-header className="site-header fixed inset-x-0 top-0 z-50 text-white">
       <div className="site-container relative z-10 flex min-h-[84px] items-center justify-between gap-5 lg:min-h-[92px]">
-        <a data-nav-item href="#" aria-label="Jidor Car — accueil" className="motion-hover shrink-0 rounded-panel bg-white px-2.5 py-1 shadow-[0_8px_28px_rgba(0,0,0,.12)]"><Logo className="scale-[.88]" /></a>
+        <a data-nav-item href="#" aria-label="Accueil" className="motion-hover shrink-0 rounded-panel bg-white px-2.5 py-1 shadow-[0_8px_28px_rgba(0,0,0,.12)]"><Logo className="scale-[.88]" /></a>
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Navigation principale">
           {navigation.map((item) => <a data-nav-item key={item.label} href={item.href} className="header-nav-link text-sm font-semibold text-white/85">{item.label}</a>)}
         </nav>

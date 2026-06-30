@@ -1,22 +1,60 @@
 @import "tailwindcss";
 
-/* Exact reusable tokens extracted from Brand Book.dc.html. */
+/*
+ * ═══════════════════════════════════════════════════════════════════════════════
+ * DESIGN TOKENS — [BRAND_TOKEN] markers indicate values to replace per client
+ *
+ * How to adapt:
+ *   1. Open the client's brand book → find the color palette section
+ *   2. Replace each [BRAND_TOKEN] hex value with the real brand color
+ *   3. Update font families in the [FONT_SETUP] section in layout.tsx
+ *
+ * All Tailwind utility classes (text-brand, bg-brand, border-brand, etc.)
+ * are generated automatically from these token definitions.
+ * ═══════════════════════════════════════════════════════════════════════════════
+ */
 @theme inline {
-  --color-ink: #0a1e36;
-  --color-jidor: #1683d6;
-  --color-jidor-hover: #0f6bb0;
-  --color-deep-blue: #0e5c9e;
-  --color-bright-blue: #3da5ea;
-  --color-sand: #c98a3c;
+  /* [BRAND_TOKEN: brand] — Primary brand color.
+     Used for: CTAs, active nav underline, price highlights, step badges.
+     Extract from brand book → "Couleur principale" → paste hex here. */
+  --color-brand: #000000;
+
+  /* [BRAND_TOKEN: brand-hover] — Hover/pressed variant of primary (~10–15% darker).
+     Typically auto-derivable: darken brand by 10% in any color tool. */
+  --color-brand-hover: #000000;
+
+  /* [BRAND_TOKEN: brand-deep] — Deep/dark variant of primary.
+     Used for: heading highlights, focused link states, dark CTA text.
+     Extract from brand book → "Couleur sombre" or darken primary by ~30%. */
+  --color-brand-deep: #000000;
+
+  /* [BRAND_TOKEN: brand-light] — Light/bright variant of primary.
+     Used for: decorative accents, gradient endpoints, icon tints.
+     Extract from brand book → "Couleur claire" or lighten primary by ~30%. */
+  --color-brand-light: #000000;
+
+  /* [BRAND_TOKEN: accent] — Secondary accent color.
+     Used for: badges, tags, decorative highlights, warm accents.
+     Extract from brand book → "Couleur d'accentuation" or secondary palette. */
+  --color-accent: #000000;
+
+  /* [BRAND_TOKEN: ink] — Darkest brand tone.
+     Used for: main text, dark section backgrounds, hero overlay.
+     Extract from brand book → "Couleur foncée" or a very dark navy/charcoal. */
+  --color-ink: #111111;
+
+  /* Neutral palette — these generic values rarely need changing.
+     Adjust lightness/warmth to match the client's tone if needed. */
   --color-paper: #f5f7fa;
-  --color-mist: #eaf3fb;
+  --color-mist: #f0f4f8;
   --color-line: #e2e8f0;
   --color-slate: #5c6b7a;
   --color-white: #ffffff;
 
-  --font-sans: var(--font-manrope);
-  --font-display: var(--font-sora);
-  --font-mono: var(--font-jetbrains-mono);
+  /* [FONT_SETUP] — set by layout.tsx font loader; do not change these names */
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
+  --font-mono: var(--font-mono-code);
 
   --radius-card: 8px;
   --radius-button: 8px;
@@ -28,8 +66,8 @@
 }
 
 :root {
-  --shadow-card: 0 1px 3px rgba(10, 30, 54, 0.08), 0 18px 42px rgba(10, 30, 54, 0.08);
-  --shadow-float: 0 16px 40px rgba(10, 30, 54, 0.16);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08), 0 18px 42px rgba(0, 0, 0, 0.08);
+  --shadow-float: 0 16px 40px rgba(0, 0, 0, 0.16);
 }
 
 * {
@@ -43,8 +81,8 @@ html {
 body {
   margin: 0;
   background: #ffffff;
-  color: #0a1e36;
-  font-family: var(--font-manrope), sans-serif;
+  color: var(--color-ink);
+  font-family: var(--font-body), sans-serif;
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -66,8 +104,8 @@ a {
 }
 
 ::selection {
-  background: #3da5ea;
-  color: #0a1e36;
+  background: var(--color-brand-light, #3da5ea);
+  color: var(--color-ink);
 }
 
 .site-container {
@@ -80,7 +118,7 @@ a {
 }
 
 .section-kicker {
-  font-family: var(--font-jetbrains-mono), monospace;
+  font-family: var(--font-mono-code), monospace;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -89,7 +127,7 @@ a {
 
 .section-title {
   margin: 0;
-  font-family: var(--font-sora), sans-serif;
+  font-family: var(--font-heading), sans-serif;
   font-size: clamp(2.25rem, 5vw, 3.75rem);
   font-weight: 600;
   line-height: 1.05;
@@ -114,15 +152,15 @@ a {
 }
 
 .button-primary {
-  border: 1px solid #1683d6;
-  background: #1683d6;
+  border: 1px solid var(--color-brand);
+  background: var(--color-brand);
   color: #ffffff;
 }
 
 .button-secondary {
   border: 1px solid #cbd5e1;
   background: #ffffff;
-  color: #0a1e36;
+  color: var(--color-ink);
 }
 
 .button-whatsapp {
@@ -139,7 +177,7 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 summary:focus-visible {
-  outline: 3px solid #3da5ea;
+  outline: 3px solid var(--color-brand-light, #3da5ea);
   outline-offset: 3px;
 }
 
@@ -159,12 +197,12 @@ summary:focus-visible {
 
 .speed-line::before {
   width: 100%;
-  background: #0a1e36;
+  background: var(--color-ink);
 }
 
 .speed-line::after {
   width: 62%;
-  background: #3da5ea;
+  background: var(--color-brand-light, #3da5ea);
 }
 
 .skip-link {
@@ -176,7 +214,7 @@ summary:focus-visible {
   border-radius: 8px;
   background: #ffffff;
   padding: 0.7rem 1rem;
-  color: #0a1e36;
+  color: var(--color-ink);
   font-weight: 700;
 }
 
@@ -198,7 +236,7 @@ summary:focus-visible {
   z-index: -1;
   border-bottom: 1px solid rgba(226, 232, 240, 0.9);
   background: rgba(245, 247, 250, 0.82);
-  box-shadow: 0 12px 36px rgba(10, 30, 54, 0.1);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
   opacity: 0;
   backdrop-filter: blur(18px);
   content: "";
@@ -223,7 +261,7 @@ summary:focus-visible {
   bottom: 7px;
   left: 0;
   height: 1px;
-  background: #3da5ea;
+  background: var(--color-brand-light, #3da5ea);
   content: "";
   transform: scaleX(0);
   transform-origin: right;
@@ -236,12 +274,12 @@ summary:focus-visible {
 }
 
 .site-header.is-scrolled .header-nav-link {
-  color: #0a1e36;
+  color: var(--color-ink);
 }
 
 .site-header.is-scrolled .header-nav-link:hover,
 .site-header.is-scrolled .header-nav-link:focus-visible {
-  color: #0e5c9e;
+  color: var(--color-brand-deep);
 }
 
 .header-nav-link:hover::after,
@@ -267,40 +305,40 @@ summary:focus-visible {
 .header-cta {
   border: 1px solid #ffffff;
   background: #ffffff;
-  color: #0a1e36;
+  color: var(--color-ink);
   transition: border-color 200ms ease-out, background-color 200ms ease-out, color 200ms ease-out;
 }
 
 .site-header.is-scrolled .header-cta {
-  border-color: #1683d6;
-  background: #1683d6;
+  border-color: var(--color-brand);
+  background: var(--color-brand);
   color: #ffffff;
 }
 
 .site-header.is-scrolled .header-menu-button {
-  border-color: rgba(22, 131, 214, 0.2);
+  border-color: rgba(0, 0, 0, 0.2);
   background: rgba(255, 255, 255, 0.78);
-  color: #0a1e36;
+  color: var(--color-ink);
 }
 
 .site-header.is-scrolled .header-mobile-nav {
   border-color: rgba(226, 232, 240, 0.95);
   background: rgba(245, 247, 250, 0.96);
-  color: #0a1e36;
+  color: var(--color-ink);
 }
 
 .site-header.is-scrolled .header-mobile-link {
-  color: #0a1e36;
+  color: var(--color-ink);
 }
 
 .site-header.is-scrolled .header-mobile-lang-label {
-  color: rgba(10, 30, 54, 0.55);
+  color: rgba(17, 17, 17, 0.55);
 }
 
 .site-header.is-scrolled .header-mobile-link:hover,
 .site-header.is-scrolled .header-mobile-link:focus-visible {
-  background: rgba(234, 243, 251, 0.85);
-  color: #0e5c9e;
+  background: rgba(240, 244, 248, 0.85);
+  color: var(--color-brand-deep);
 }
 
 .header-mobile-link-arrow {
@@ -308,7 +346,7 @@ summary:focus-visible {
 }
 
 .site-header.is-scrolled .header-mobile-link-arrow {
-  color: rgba(10, 30, 54, 0.25);
+  color: rgba(17, 17, 17, 0.25);
 }
 
 .header-menu-button {
@@ -337,15 +375,15 @@ details[open] > .header-menu-button .icon-x {
 }
 
 details[open] > .header-menu-button {
-  border-color: rgba(61, 165, 234, 0.4);
+  border-color: rgba(0, 0, 0, 0.4);
   background: #ffffff;
-  color: #0a1e36;
+  color: var(--color-ink);
 }
 
 .site-header.is-scrolled details[open] > .header-menu-button {
-  border-color: rgba(22, 131, 214, 0.35);
+  border-color: rgba(0, 0, 0, 0.35);
   background: #ffffff;
-  color: #0a1e36;
+  color: var(--color-ink);
 }
 
 .header-mobile-nav {
@@ -370,7 +408,7 @@ details[open] > .header-menu-button {
   gap: 2px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.24);
-  background: rgba(10, 30, 54, 0.2);
+  background: rgba(0, 0, 0, 0.2);
   padding: 3px;
   backdrop-filter: blur(12px);
   transition: border-color 200ms ease-out, background-color 200ms ease-out;
@@ -383,7 +421,7 @@ details[open] > .header-menu-button {
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  font-family: var(--font-jetbrains-mono), monospace;
+  font-family: var(--font-mono-code), monospace;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -395,20 +433,20 @@ details[open] > .header-menu-button {
 
 .header-lang-option[aria-pressed="true"] {
   background: #ffffff;
-  color: #0a1e36;
+  color: var(--color-ink);
 }
 
 .site-header.is-scrolled .header-lang-toggle {
-  border-color: rgba(22, 131, 214, 0.2);
+  border-color: rgba(0, 0, 0, 0.2);
   background: rgba(255, 255, 255, 0.6);
 }
 
 .site-header.is-scrolled .header-lang-option {
-  color: rgba(10, 30, 54, 0.55);
+  color: rgba(17, 17, 17, 0.55);
 }
 
 .site-header.is-scrolled .header-lang-option[aria-pressed="true"] {
-  background: #1683d6;
+  background: var(--color-brand);
   color: #ffffff;
 }
 

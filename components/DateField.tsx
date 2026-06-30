@@ -15,9 +15,9 @@ export function DateField({ label, name, ariaLabel }: DateFieldProps) {
   return (
     <label
       onClick={() => inputRef.current?.showPicker?.()}
-      className="flex min-h-[68px] flex-1 cursor-pointer items-center gap-3 rounded-panel border border-line px-4 transition-colors focus-within:border-jidor"
+      className="flex min-h-[68px] flex-1 cursor-pointer items-center gap-3 rounded-panel border border-line px-4 transition-colors focus-within:border-brand"
     >
-      <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-mist text-deep-blue">
+      <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-mist text-brand-deep">
         <CalendarDays size={17} strokeWidth={1.7} />
       </span>
       <span className="grid min-w-0 flex-1">

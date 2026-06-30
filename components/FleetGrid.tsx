@@ -6,6 +6,8 @@ import type { Vehicle, VehicleCategory } from "@/types";
 import { SectionHeading } from "./SectionHeading";
 import { SectionBackdrop } from "./SectionBackdrop";
 import { VehicleCard } from "./VehicleCard";
+import { agency } from "@/data/agency";
+import { content } from "@/data/content";
 
 interface FleetGridProps {
   vehicles: Vehicle[];
@@ -14,6 +16,8 @@ interface FleetGridProps {
 type FleetFilter = "Tous" | VehicleCategory;
 
 const filters: FleetFilter[] = ["Tous", "Citadine", "Berline", "SUV"];
+
+const { fleet } = content;
 
 export function FleetGrid({ vehicles }: FleetGridProps) {
   const [activeFilter, setActiveFilter] = useState<FleetFilter>("Tous");
@@ -30,9 +34,9 @@ export function FleetGrid({ vehicles }: FleetGridProps) {
       <div className="site-container relative z-10">
         <div data-reveal className="flex flex-col justify-between gap-7 md:flex-row md:items-end">
           <SectionHeading
-            kicker="Notre flotte"
-            title="Choisissez votre prochaine route."
-            description="Citadine agile, berline confortable ou SUV spacieux : trouvez le véhicule adapté à votre séjour."
+            kicker={fleet.kicker}
+            title={fleet.title}
+            description={fleet.description}
           />
           <div className="hidden flex-wrap gap-2 md:flex" role="group" aria-label="Filtrer les véhicules par catégorie">
             {filters.map((filter) => {
@@ -46,7 +50,7 @@ export function FleetGrid({ vehicles }: FleetGridProps) {
                   className={`min-h-11 cursor-pointer rounded-pill border px-4 py-2 text-xs font-bold transition-colors duration-200 ${
                     isActive
                       ? "border-ink bg-ink text-white"
-                      : "border-line bg-white text-ink hover:border-jidor hover:text-deep-blue"
+                      : "border-line bg-white text-ink hover:border-brand hover:text-brand-deep"
                   }`}
                 >
                   {filter}
@@ -75,12 +79,18 @@ export function FleetGrid({ vehicles }: FleetGridProps) {
           {filteredVehicles.map((vehicle) => <VehicleCard key={vehicle.id} vehicle={vehicle} />)}
         </div>
 
+        {vehicles.length === 0 && (
+          <p className="mt-12 text-center text-slate">
+            [FLEET_DATA] — Ajoutez des véhicules dans <code>data/vehicles.ts</code> pour les afficher ici.
+          </p>
+        )}
+
         <div className="mx-auto mt-12 max-w-3xl rounded-card border border-white/80 bg-white/70 p-6 text-center shadow-[var(--shadow-card)] backdrop-blur-xl">
-          <p className="font-display text-2xl font-semibold tracking-[-.02em] text-ink">Vous hésitez entre deux modèles&nbsp;?</p>
-          <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-slate">Envoyez-nous vos dates et votre trajet. On vous recommande le véhicule le plus adapté, sans vous pousser vers l’option la plus chère.</p>
+          <p className="font-display text-2xl font-semibold tracking-[-.02em] text-ink">{fleet.ctaSubtitle}</p>
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-slate">{fleet.ctaDescription}</p>
           <div className="mt-5 flex justify-center">
-            <a href="https://wa.me/212661787903" className="button-primary motion-hover">
-              <MessageCircle size={17} strokeWidth={1.6} /> Demander conseil sur WhatsApp
+            <a href={agency.whatsapp} className="button-primary motion-hover">
+              <MessageCircle size={17} strokeWidth={1.6} /> {fleet.ctaLabel}
             </a>
           </div>
         </div>

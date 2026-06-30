@@ -1,16 +1,16 @@
 import { ArrowRight, BadgeCheck, Headphones, MessageCircle } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { SectionBackdrop } from "./SectionBackdrop";
+import { agency } from "@/data/agency";
+import { content } from "@/data/content";
 
-const features = [
-  { icon: Headphones, title: "Assistance 24h/7j", text: "Une assistance disponible à tout moment pour répondre à vos besoins." },
-  { icon: BadgeCheck, title: "Service expert", text: "Une équipe professionnelle dédiée à l'excellence et à votre satisfaction." },
-];
+const featureIcons = [Headphones, BadgeCheck];
 
-const SATISFACTION_RATE = 100;
+const { serviceExpert } = content;
+
 const RADIUS = 80;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
-const DASH_OFFSET = CIRCUMFERENCE * (1 - SATISFACTION_RATE / 100);
+const DASH_OFFSET = CIRCUMFERENCE * (1 - serviceExpert.satisfactionRate / 100);
 
 export function ServiceExpert() {
   return (
@@ -20,30 +20,33 @@ export function ServiceExpert() {
       <div className="site-container relative z-10 grid items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
         <div>
           <SectionHeading
-            kicker="Service expert"
-            title="Le confort rencontre la fiabilité."
-            description="Nous croyons qu'un bon service ne doit jamais compromettre la fiabilité. Chaque véhicule de notre flotte est sélectionné avec soin et suit des standards d'entretien rigoureux."
+            kicker={serviceExpert.kicker}
+            title={serviceExpert.title}
+            description={serviceExpert.description}
           />
           <div className="mt-9 hidden gap-6 lg:grid">
-            {features.map(({ icon: Icon, title, text }) => (
-              <div key={title} className="flex gap-4">
-                <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-mist text-deep-blue">
-                  <Icon size={23} strokeWidth={1.6} />
-                </span>
-                <div>
-                  <h3 className="font-semibold text-ink">{title}</h3>
-                  <p className="mt-1 text-sm leading-6 text-slate">{text}</p>
+            {serviceExpert.features.map(({ title, text }, i) => {
+              const Icon = featureIcons[i] ?? BadgeCheck;
+              return (
+                <div key={title} className="flex gap-4">
+                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-mist text-brand-deep">
+                    <Icon size={23} strokeWidth={1.6} />
+                  </span>
+                  <div>
+                    <h3 className="font-semibold text-ink">{title}</h3>
+                    <p className="mt-1 text-sm leading-6 text-slate">{text}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
           <div className="mt-9 flex flex-wrap justify-center gap-3 lg:justify-start">
             <a href="#flotte" className="button-primary motion-hover group">
-              Voir les véhicules
+              {serviceExpert.ctaFleetLabel}
               <ArrowRight size={16} strokeWidth={1.8} className="transition-transform duration-200 group-hover:translate-x-1" />
             </a>
-            <a href="https://wa.me/212661787903" className="button-secondary motion-hover">
-              <MessageCircle size={17} strokeWidth={1.6} /> Demander conseil
+            <a href={agency.whatsapp} className="button-secondary motion-hover">
+              <MessageCircle size={17} strokeWidth={1.6} /> {serviceExpert.ctaContactLabel}
             </a>
           </div>
         </div>
@@ -59,16 +62,16 @@ export function ServiceExpert() {
                   cy="100"
                   r={RADIUS}
                   fill="none"
-                  stroke="#1683D6"
+                  stroke="var(--color-brand)"
                   strokeWidth="14"
                   strokeLinecap="round"
                   strokeDasharray={CIRCUMFERENCE}
                   strokeDashoffset={DASH_OFFSET}
                 />
               </svg>
-              <strong data-progress-value className="absolute font-display text-4xl font-bold text-ink">{SATISFACTION_RATE}%</strong>
+              <strong data-progress-value className="absolute font-display text-4xl font-bold text-ink">{serviceExpert.satisfactionRate}%</strong>
             </div>
-            <p className="mt-6 text-center font-mono text-xs font-bold uppercase tracking-[.14em] text-slate">Taux de satisfaction<br />client</p>
+            <p className="mt-6 text-center font-mono text-xs font-bold uppercase tracking-[.14em] text-slate">{serviceExpert.satisfactionLabel}</p>
           </div>
         </div>
       </div>

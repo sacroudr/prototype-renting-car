@@ -8,7 +8,7 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { FAQ } from "@/components/FAQ";
 import { ServiceExpert } from "@/components/ServiceExpert";
 import { Testimonials } from "@/components/Testimonials";
-import { WhyJidorCar } from "@/components/WhyJidorCar";
+import { WhyUs } from "@/components/WhyUs";
 import { faqItems, testimonials, vehicles } from "@/data/content";
 
 export default function Home() {
@@ -25,7 +25,7 @@ export default function Home() {
           <ServiceExpert />
           <FleetGrid vehicles={vehicles} />
           <Testimonials testimonials={testimonials} rating="4,9/5" />
-          <WhyJidorCar />
+          <WhyUs />
           <FAQ items={faqItems} />
         </div>
       </main>

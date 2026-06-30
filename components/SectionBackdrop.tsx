@@ -25,8 +25,8 @@ export function SectionBackdrop({ variant = "left" }: SectionBackdropProps) {
 
   return (
     <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-      <div className={`absolute size-[460px] rounded-full bg-bright-blue/14 blur-3xl ${classes.first}`} />
-      <div className={`absolute size-[500px] rounded-full bg-jidor/12 blur-3xl ${classes.second}`} />
+      <div className={`absolute size-[460px] rounded-full bg-brand-light/14 blur-3xl ${classes.first}`} />
+      <div className={`absolute size-[500px] rounded-full bg-brand/12 blur-3xl ${classes.second}`} />
       <div className={`absolute size-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/80 blur-3xl ${classes.center}`} />
     </div>
   );
